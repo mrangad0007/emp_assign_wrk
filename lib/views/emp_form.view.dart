@@ -224,11 +224,9 @@ class _EmployeeFormState extends State<EmployeeForm> {
                             ? selectedRole
                             : 'Select a Role',
                         style: TextStyle(
-                          color: selectedRole.isNotEmpty
-                              ? (_formkey.currentState?.validate() ?? false)
+                          color: selectedRole != null && selectedRole.isNotEmpty
                                   ? Colors.black
                                   : Colors.red
-                              : Colors.red,
                         ),
                       ),
                     ],
@@ -293,9 +291,7 @@ class _EmployeeFormState extends State<EmployeeForm> {
                               : Text(
                                   "No Date",
                                   style: TextStyle(
-                                    color: (_formkey.currentState?.validate() ??
-                                                false) &&
-                                            toDate != null
+                                    color: toDate != null
                                         ? Colors.black
                                         : Colors.red,
                                   ),
@@ -347,9 +343,11 @@ class _EmployeeFormState extends State<EmployeeForm> {
                           log(fromDate.toString());
                           log(toDate.toString());
 
+                          String capturedName = textFieldController.text;
+
                           if(widget.emp != null){
                             widget.empBloc!
-                                .updateEmps(_name, selectedRole, fromDate, toDate!, widget.emp!.id);
+                                .updateEmps(capturedName, selectedRole, fromDate, toDate!, widget.emp!.id);
                           } else {
                             widget.empBloc!
                                 .addEmps(_name, selectedRole, fromDate, toDate!);
