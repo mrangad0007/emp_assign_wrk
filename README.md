@@ -7,5 +7,3 @@ Employee Management App
 
 #Bloc #sqflite
 
-https://codeinvesto.com/upload/app-emp-demo.mp4
-
