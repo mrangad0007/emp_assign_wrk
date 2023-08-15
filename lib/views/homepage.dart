@@ -67,19 +67,19 @@ class _EmpHomePageState extends State<EmpHomePage> {
                       } else {
                         return Padding(
                           padding: const EdgeInsets.all(14.0),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 8.0,
-                              ),
-                              DismissInstructions(),
-                              const SizedBox(
-                                height: 8.0,
-                              ),
-                              Expanded(
-                                child: SingleChildScrollView(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 8.0,
+                                ),
+                                DismissInstructions(),
+                                const SizedBox(
+                                  height: 8.0,
+                                ),
+                                Container(
                                   child: ListView.separated(
-                                    physics: AlwaysScrollableScrollPhysics(),
+                                    physics: NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemCount: emps.length,
                                     separatorBuilder: (context, index) =>
@@ -104,6 +104,7 @@ class _EmpHomePageState extends State<EmpHomePage> {
                                           );
                                         },
                                         background: Container(
+                                          padding: EdgeInsets.only(right: 12.0),
                                           alignment: Alignment.centerRight,
                                           color: Colors.red,
                                           child: const Icon(Icons.delete, color: Colors.white),
@@ -180,8 +181,11 @@ class _EmpHomePageState extends State<EmpHomePage> {
                                     },
                                   ),
                                 ),
-                              )
-                            ],
+                                const SizedBox(
+                                  height: 8.0,
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       }
